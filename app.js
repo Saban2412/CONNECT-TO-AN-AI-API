@@ -1,6 +1,6 @@
 import { z } from "zod";
 import express from "express";
-import llmRouter from "./src/llm/routes/triage.js";
+import llmRouter from "./src/routes/triage.js";
 
 const app = express();
 const PORT = 3000;

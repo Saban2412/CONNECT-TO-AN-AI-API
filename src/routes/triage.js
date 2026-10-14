@@ -15,7 +15,6 @@ router.post("/triage", async (req, res) => {
 
   const { text } = validation.data;
 
-  // Stub opcija: ako je podešeno u .env ili kao uobičajeni fallback u Stage 1
   if (process.env.LLM_STUB === "1" || true) {
     const fakeResponse = {
       category: "bug",
