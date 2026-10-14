@@ -1,5 +1,6 @@
 import { z } from "zod";
 import express from "express";
+import llmRouter from "./src/llm/routes/triage.js";
 
 const app = express();
 const PORT = 3000;
@@ -12,6 +13,8 @@ app.get("/", (req, res) => {
 app.get("/health", (req, res) => {
   res.send({ status: "ok" });
 });
+
+app.use("/api", llmRouter);
 
 app.listen(PORT, () => {
   console.log("App listens on port: ", PORT);
