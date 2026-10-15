@@ -1,5 +1,6 @@
 import express from "express";
 import { inputSchema, outputSchema } from "../schemas/triage.js";
+import { classifyMessage } from "../llm/triage.js";
 
 const router = express.Router();
 
@@ -15,7 +16,7 @@ router.post("/triage", async (req, res) => {
 
   const { text } = validation.data;
 
-  if (process.env.LLM_STUB === "1" || true) {
+  if (process.env.LLM_STUB === "1") {
     const fakeResponse = {
       category: "bug",
       urgency: "high",
@@ -30,6 +31,16 @@ router.post("/triage", async (req, res) => {
     }
 
     return res.json(stubValidation.data);
+  }
+  try {
+    const aiResult = await classifyMessage(text);
+    return res.json(aiResult);
+  } catch (error) {
+    console.error("AI Triage Error:", error.message);
+    return res.status(500).json({
+      error: "Failed to classify message",
+      details: error.message,
+    });
   }
 });
 
