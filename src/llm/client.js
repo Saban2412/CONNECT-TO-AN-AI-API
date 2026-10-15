@@ -10,4 +10,6 @@ if (!apiKey) {
 export const llmClient = new OpenAI({
   baseURL: baseURL,
   apiKey: apiKey,
+  timeout: 30000, // Explicit timeout 30 sekundi (umjesto 10 min)
+  maxRetries: 2, // Maksimalno 2 retry-ja za mrežne greške/429
 });

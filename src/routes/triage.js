@@ -4,8 +4,7 @@ import { classifyMessage } from "../llm/triage.js";
 
 const router = express.Router();
 
-router.post("/triage", async (req, res) => {
-  // 1. Validacija ulaznih podataka (Klijentska greška)
+router.post("/", async (req, res) => {
   const validation = inputSchema.safeParse(req.body);
 
   if (!validation.success) {
@@ -16,6 +15,15 @@ router.post("/triage", async (req, res) => {
   }
 
   const { text } = validation.data;
+
+  if (process.env.LLM_ENABLED === "false") {
+    return res.status(503).json({
+      category: "other",
+      urgency: "normal",
+      confidence: 0.0,
+      reason: "Kill switch active: AI classification is temporarily disabled.",
+    });
+  }
 
   if (process.env.LLM_STUB === "1") {
     return res.json({
