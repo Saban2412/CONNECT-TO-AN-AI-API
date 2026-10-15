@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "input": "I cannot log in to my account. It keeps giving me an error 500.",
+    "expected_category": "bug"
+  },
+  {
+    "id": 2,
+    "input": "I was charged twice for this month's subscription. Please issue a refund.",
+    "expected_category": "billing"
+  },
+  {
+    "id": 3,
+    "input": "It would be great if you could add dark mode support to the desktop application.",
+    "expected_category": "feature"
+  },
+  {
+    "id": 4,
+    "input": "What is the weather like outside today?",
+    "expected_category": "other"
+  },
+  {
+    "id": 5,
+    "input": "My credit card was declined three times even though I have sufficient funds.",
+    "expected_category": "billing"
+  },
+  {
+    "id": 6,
+    "input": "The save profile button in the settings view does not respond to clicks.",
+    "expected_category": "bug"
+  },
+  {
+    "id": 7,
+    "input": "Could you enable exporting reports directly into PDF and Excel formats?",
+    "expected_category": "feature"
+  },
+  {
+    "id": 8,
+    "input": "Just wanted to send a quick thank you to the support team for great help!",
+    "expected_category": "other"
+  }
+]
